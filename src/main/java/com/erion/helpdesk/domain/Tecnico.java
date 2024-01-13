@@ -3,6 +3,8 @@ package com.erion.helpdesk.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.erion.helpdesk.domain.enums.Perfil;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -20,5 +22,15 @@ public class Tecnico extends Pessoa {
     private static final long serialVersionUID = 1L;
 
     @OneToMany(mappedBy = "tecnico")
-    private List<Chamado> chamados = new ArrayList<>();   
+    private List<Chamado> chamados = new ArrayList<>();
+
+    public Tecnico(Integer id, String nome, String cpf, String email, String senha) {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.senha = senha;
+        addPerfil(Perfil.TECNICO);
+    };
 }
