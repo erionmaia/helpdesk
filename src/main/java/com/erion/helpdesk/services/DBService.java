@@ -3,6 +3,7 @@ package com.erion.helpdesk.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.erion.helpdesk.domain.Chamado;
@@ -25,6 +26,7 @@ public class DBService {
 	@Autowired
 	private ChamadoRepository chamadoRepository;
 
+	@Bean
     public void instanciaDB(){
         Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "42497501084", "valdir@mail.com", "123");
 		Tecnico tec2 = new Tecnico(null, "Erion Maia", "97544627047", "erion@mail.com", "456");
