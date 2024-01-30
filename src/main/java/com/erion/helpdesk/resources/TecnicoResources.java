@@ -3,6 +3,7 @@ package com.erion.helpdesk.resources;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.erion.helpdesk.domain.Tecnico;
+import com.erion.helpdesk.domain.dtos.TecnicoDTO;
 import com.erion.helpdesk.services.TecnicoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class TecnicoResources {
     private TecnicoService tecnicoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Tecnico> findById(@PathVariable Integer id) {
+    public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
         Tecnico obj = tecnicoService.findById(id);
-        return ResponseEntity.ok().body(obj);
+        return ResponseEntity.ok().body(new TecnicoDTO(obj));
     }
     
 }
