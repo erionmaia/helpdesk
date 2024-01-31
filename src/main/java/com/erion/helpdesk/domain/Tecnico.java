@@ -2,7 +2,9 @@ package com.erion.helpdesk.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.erion.helpdesk.domain.dtos.TecnicoDTO;
 import com.erion.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,4 +37,15 @@ public class Tecnico extends Pessoa {
         this.senha = senha;
         addPerfil(Perfil.TECNICO);
     };
+
+    public Tecnico(TecnicoDTO tec) {
+        super();
+        this.id = tec.getId();
+        this.nome = tec.getNome();
+        this.cpf = tec.getCpf();
+        this.email = tec.getEmail();
+        this.senha = tec.getSenha();
+        this.perfis = tec.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+        this.dataCriacao = tec.getDataCriacao();
+    }
 }

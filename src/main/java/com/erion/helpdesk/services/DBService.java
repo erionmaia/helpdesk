@@ -67,9 +67,9 @@ public class DBService {
 		Chamado c5 = new Chamado(null, Prioridade.BAIXA, Status.ANDAMENTO, "Chamado 05", "Primeiro chamado", tec5, cli5);
 		Chamado c6 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 06", "Primeiro chamado", tec6, cli6);
 		Chamado c7 = new Chamado(null, Prioridade.ALTA, Status.ANDAMENTO, "Chamado 07", "Primeiro chamado", tec7, cli7);
-		Chamado c8 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 08", "Primeiro chamado", tec6, cli8);
-		Chamado c9 = new Chamado(null, Prioridade.ALTA, Status.ANDAMENTO, "Chamado 09", "Primeiro chamado", tec5, cli9);
-		Chamado c10 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 10", "Primeiro chamado", tec4, cli10);
+		Chamado c8 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 08", "Primeiro chamado", tec1, cli8);
+		Chamado c9 = new Chamado(null, Prioridade.ALTA, Status.ANDAMENTO, "Chamado 09", "Primeiro chamado", tec2, cli9);
+		Chamado c10 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 10", "Primeiro chamado", tec3, cli10);
 
 
 		tecnicoRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, tec6, tec7));
