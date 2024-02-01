@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -48,5 +48,11 @@ public class TecnicoResources {
         Tecnico newTecnico = tecnicoService.addTecnico(tecnicoDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newTecnico.getId()).toUri();
         return ResponseEntity.created(uri).build();
-    }   
+    }
+
+    @PutMapping(value="/{id}")
+    public ResponseEntity<TecnicoDTO> updateTecnico(@PathVariable Integer id, @RequestBody TecnicoDTO tecnicoDTO) {
+        Tecnico oldTecnico = tecnicoService.update(id, tecnicoDTO);
+        return ResponseEntity.ok().body(new TecnicoDTO(oldTecnico));
+    }
 }

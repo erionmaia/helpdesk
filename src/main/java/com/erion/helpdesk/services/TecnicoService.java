@@ -12,6 +12,9 @@ import com.erion.helpdesk.domain.dtos.TecnicoDTO;
 import com.erion.helpdesk.repositories.PessoaRepository;
 import com.erion.helpdesk.repositories.TecnicoRepository;
 import com.erion.helpdesk.services.exceptions.ObjectNotFoundException;
+
+import jakarta.validation.Valid;
+
 import com.erion.helpdesk.services.exceptions.DataIntegrityViolationException;
 
 @Service
@@ -38,6 +41,14 @@ public class TecnicoService {
         return tecnicoRepository.save(newTecnico);
     }
 
+    public Tecnico update(Integer id, @Valid TecnicoDTO tecnicoDTO) {
+        tecnicoDTO.setId(id);
+        Tecnico oldTecnico = findById(id);
+        validaPorCpfEEmail(tecnicoDTO);
+        oldTecnico = new Tecnico(tecnicoDTO);
+        return tecnicoRepository.save(oldTecnico);
+    }
+
     private void validaPorCpfEEmail(TecnicoDTO tecnicoDTO) {
         Optional<Pessoa> newPessoa = pessoaRepository.findByCpf(tecnicoDTO.getCpf());
         if(newPessoa.isPresent() && newPessoa.get().getId() != tecnicoDTO.getId()) {
@@ -48,4 +59,6 @@ public class TecnicoService {
             throw new DataIntegrityViolationException("E-mail já cadastrado na base de dados");
         };
     }
+
+    
 }
