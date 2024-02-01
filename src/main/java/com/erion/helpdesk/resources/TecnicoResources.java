@@ -11,6 +11,8 @@ import com.erion.helpdesk.domain.Tecnico;
 import com.erion.helpdesk.domain.dtos.TecnicoDTO;
 import com.erion.helpdesk.services.TecnicoService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,10 +44,9 @@ public class TecnicoResources {
     }
 
     @PostMapping
-    public ResponseEntity<TecnicoDTO> addTecnico(@RequestBody TecnicoDTO tecnicoDTO) {
+    public ResponseEntity<TecnicoDTO> addTecnico(@Valid @RequestBody TecnicoDTO tecnicoDTO) {
         Tecnico newTecnico = tecnicoService.addTecnico(tecnicoDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newTecnico.getId()).toUri();
         return ResponseEntity.created(uri).build();
-    }
-    
+    }   
 }
