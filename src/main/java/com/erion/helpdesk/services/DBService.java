@@ -35,6 +35,7 @@ public class DBService {
 		Tecnico tec5 = new Tecnico(null, "Pedro Alvares Cabral", "59466268090", "pedrinho@mail.com.pt", "135");
 		Tecnico tec6 = new Tecnico(null, "Chevrolet da Silva Ford", "31195494017", "chedasilvafor@email.com", "54321");
 		Tecnico tec7 = new Tecnico(null, "Simplicio Simplorio da Simplicidade Simples", "59391711090", "simples@justmail.com", "246");
+		Tecnico tec8 = new Tecnico(null, "Minervina da Silva", "56878216001", "minervina@justmail.com", "246");
 		tec1.addPerfil(Perfil.ADMIN);
 		tec2.addPerfil(Perfil.ADMIN);
 		tec3.addPerfil(Perfil.ADMIN);
@@ -72,7 +73,7 @@ public class DBService {
 		Chamado c10 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 10", "Primeiro chamado", tec3, cli10);
 
 
-		tecnicoRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, tec6, tec7));
+		tecnicoRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, tec6, tec7, tec8));
 		clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5, cli6, cli7, cli8, cli9, cli10, cli11, cli12, cli13, cli14, cli15, cli16, cli17, cli18, cli19, cli20));
 		chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10));
     }

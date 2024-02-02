@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,7 +53,13 @@ public class TecnicoResources {
 
     @PutMapping(value="/{id}")
     public ResponseEntity<TecnicoDTO> updateTecnico(@PathVariable Integer id, @RequestBody TecnicoDTO tecnicoDTO) {
-        Tecnico oldTecnico = tecnicoService.update(id, tecnicoDTO);
+        Tecnico oldTecnico = tecnicoService.updateTecnico(id, tecnicoDTO);
         return ResponseEntity.ok().body(new TecnicoDTO(oldTecnico));
+    }
+
+    @DeleteMapping(value="/{id}")
+    public ResponseEntity<TecnicoDTO> deleteTecnico(@PathVariable Integer id) {
+        tecnicoService.deleteTecnico(id);
+        return ResponseEntity.noContent().build();
     }
 }
