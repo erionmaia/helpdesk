@@ -1,5 +1,8 @@
 package com.erion.helpdesk.resources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,5 +25,12 @@ public class ChamadoResources {
     public ResponseEntity<ChamadoDTO> findById(@PathVariable Integer id) {
         Chamado chamadoObj = chamadoService.findById(id);
         return ResponseEntity.ok().body(new ChamadoDTO(chamadoObj));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ChamadoDTO>> findAll() {
+        List<Chamado> listChamados = chamadoService.findAll();
+        List<ChamadoDTO> listChamadosDTO = listChamados.stream().map(chamadoObj -> new ChamadoDTO(chamadoObj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listChamadosDTO);
     }
 }
