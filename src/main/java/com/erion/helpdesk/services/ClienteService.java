@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.erion.helpdesk.domain.Cliente;
 import com.erion.helpdesk.domain.Pessoa;
 import com.erion.helpdesk.domain.dtos.ClienteDTO;
-import com.erion.helpdesk.domain.dtos.TecnicoDTO;
 import com.erion.helpdesk.repositories.ClienteRepository;
 import com.erion.helpdesk.repositories.PessoaRepository;
 import com.erion.helpdesk.services.exceptions.ObjectNotFoundException;
