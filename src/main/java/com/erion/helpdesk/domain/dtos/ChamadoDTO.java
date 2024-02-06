@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import com.erion.helpdesk.domain.Chamado;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ChamadoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -15,12 +17,18 @@ public class ChamadoDTO implements Serializable {
     private LocalDate dataAbertura = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+    @NotNull(message="O campo PRIORIDADE é obrigatório!")
     private Integer codPrioridade;
+    @NotNull(message="O campo STATIS é obrigatório!")
     private Integer codStatus;
+    @NotNull(message="O campo TÍTULO é obrigatório!")
     private String titulo;
+    @NotNull(message="O campo OBCERVAÇÕES é obrigatório!")
     private String observacoes;
+    @NotNull(message="O campo CÓDIGO DO TÉCNICO é obrigatório!")
     private Integer codTecnico;
     private String nomeTecnico;
+    @NotNull(message="O campo CÓDIGO DO CLIENTE é obrigatório!")
     private Integer codCliente;
     private String nomeCliente;
     
